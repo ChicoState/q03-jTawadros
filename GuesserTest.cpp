@@ -14,9 +14,15 @@ class GuesserTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor)
 };
 
-// Example "smoke test" (can be deleted)
-TEST(GuesserTest, smoke_test)
-{
-  Guesser object("Secret");
-  ASSERT_EQ( 1+1, 2 );
+TEST(GuesserTest, secret_too_long){
+    // 30 char str
+    Guesser object("abcdfghjdkjhsgdjfhgsdfsdfdsdfdsd this should be deleted");
+    string input = "abcdfghjdkjhsgdjfhgsdfsdfdsdfdsd";
+    ASSERT_EQ(input, object.m_secret);
+    ASSERT_FALSE("abcdfghjdkjhsgdjfhgsdfsdfdsdfdsd this should be deleted" == object.m_secret);
 }
+
+// TEST(GuesserTest, distance_test){
+//     string input = "mysecret";
+//     Guesser object(input);
+// }
